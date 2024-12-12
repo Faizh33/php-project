@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+    <div class="functions-container">
+        <a href="{{path('home')}}">
+            <img src="{{ asset('images/logo.png') }}" class="rounded-pill dashboard-logo" />
+        </a>
+        <div class="rounded-pill summary-container summary-functions-container summary-container-1">
+            <a href="{{ path('php_functions') }}" class="link">
+                <p class="summary-text text-center mt-3">
+                    Training
+                </p>
+            </a>
+        </div>
+        <div class="rounded-pill summary-container summary-functions-container summary-container-2">
+            <a href="" class="link">
+                <p class="summary-text text-center">
+                    Docs
+                </p>
+            </a>
+        </div>
+        <div class="rounded-pill summary-container summary-functions-container summary-container-3">
+            <a href="" class="link">
+                <p class="summary-text text-center">
+                    A venir...
+                </p>
+            </a>
+        </div>
+    </div>
+{% endblock %}
