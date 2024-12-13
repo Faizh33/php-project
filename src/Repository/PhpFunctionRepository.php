@@ -16,6 +16,23 @@ class PhpFunctionRepository extends ServiceEntityRepository
         parent::__construct($registry, PhpFunction::class);
     }
 
+    /**
+     * Récupère toutes les fonctions PHP d'une catégorie spécifique.
+     *
+     * @param string $categoryName
+     * @return array
+     */
+    public function findByCategoryName(string $categoryName): array
+    {
+        return $this->createQueryBuilder('f')
+            ->join('f.category', 'c')
+            ->andWhere('c.name = :categoryName')
+            ->setParameter('categoryName', $categoryName)
+            ->orderBy('f.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return PhpFunction[] Returns an array of PhpFunction objects
     //     */
