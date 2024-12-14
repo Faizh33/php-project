@@ -20,6 +20,9 @@ class PhpFunction
     #[ORM\Column(type: Types::TEXT)]
     private ?string $definition = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
+
     #[ORM\ManyToOne(inversedBy: 'phpFunction')]
     private ?Category $category = null;
 
@@ -48,6 +51,18 @@ class PhpFunction
     public function setDefinition(string $definition): static
     {
         $this->definition = $definition;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
