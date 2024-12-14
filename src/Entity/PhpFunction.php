@@ -20,6 +20,9 @@ class PhpFunction
     #[ORM\Column(type: Types::TEXT)]
     private ?string $definition = null;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $exemple = null;
+
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
@@ -51,6 +54,18 @@ class PhpFunction
     public function setDefinition(string $definition): static
     {
         $this->definition = $definition;
+
+        return $this;
+    }
+
+    public function getExemple(): ?string
+    {
+        return $this->exemple;
+    }
+
+    public function setExemple(?string $exemple): static
+    {
+        $this->exemple = $exemple;
 
         return $this;
     }
