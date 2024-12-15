@@ -1,0 +1,289 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Internal functions PHP{% endblock %}
+
+{% block body %}
+    <div class="docs-container">
+        <div class="function-summary-container">
+            <h1 class="text-center p-5">Les fonctions internes de PHP</h1>
+            <div class="function-summary-list-container">
+                <ul class="fs-4 title-list-container">
+                    <a href="#string-functions" class="link"><li class="function-summary-text summary-text">Les chaînes de caractères (string)</li></a>
+                    <a href="#array-functions" class="link"><li class="function-summary-text summary-text">Les tableaux (array)</li></a>
+                    <a href="#file-functions" class="link"><li class="function-summary-text summary-text">Les fichiers (file)</li></a>
+                    <a href="#date-functions" class="link"><li class="function-summary-text summary-text">Les dates (date)</li></a>
+                    <a href="#math-functions" class="link"><li class="function-summary-text summary-text">Les fonctions mathématiques</li></a>
+                    <a href="#error-functions" class="link"><li class="function-summary-text summary-text">La gestion des erreurs</li></a>
+                    <a href="#json-functions" class="link"><li class="function-summary-text summary-text">JSON</li></a>
+                    <a href="#object-functions" class="link"><li class="function-summary-text summary-text">Les objets (object)</li></a>
+                    <a href="#variables-functions" class="link"><li class="function-summary-text summary-text">Les variables</li></a>
+                    <a href="#xml-functions" class="link"><li class="function-summary-text summary-text">Le XML</li></a>
+                    <a href="#mysql-functions" class="link"><li class="function-summary-text summary-text">Gestion de MySQL</li></a>
+                    <a href="#cryptography-functions" class="link"><li class="function-summary-text summary-text">La cryptographie</li></a>
+                    <a href="#curl-functions" class="link"><li class="function-summary-text summary-text">cURL</li></a>
+                    <a href="#type-functions" class="link"><li class="function-summary-text summary-text">La gestion des types</li></a>
+                    <a href="#headers-http-functions" class="link"><li class="function-summary-text summary-text">Les en-têtes HTTP</li></a>
+                    <a href="#red-functions" class="link"><li class="function-summary-text summary-text">La gestion du réseau</li></a>
+                </ul>
+            </div>
+        </div>
+        <div class="lists-container">
+            <div class="list-container-item">
+                <h2 id="string-functions" class="main-title list-title ms-5 pt-5">Les chaînes de caractères (string)</h2>
+                <ul class="mx-auto">
+                    <div class="row m-3">
+                        {% for function in stringFunctions %}
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <a href="{{path('php_functions_item', {slug:function.slug})}}" class="link">
+                                    <div class="function-card text-start summary-text function-summary-text m-1 fs-5">
+                                        {{ function.name }}
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </ul>
+            </div>
+            <div class="list-container-item">
+                <h2 id="array-functions" class="main-title list-title ms-5 pt-5">Les tableaux (array)</h2>
+                <ul class="mx-auto">
+                    <div class="row m-3">
+                        {% for function in arrayFunctions %}
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <a href="{{path('php_functions_item', {slug:function.slug})}}" class="link">
+                                    <div class="function-card text-start summary-text function-summary-text m-1 fs-5">
+                                        {{ function.name }}
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </ul>
+            </div>
+            <div class="list-container-item">
+                <h2 id="file-functions" class="main-title list-title ms-5 pt-5">Les fichiers (file)</h2>
+                <ul class="mx-auto">
+                    <div class="row m-3">
+                        {% for function in fileFunctions %}
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <a href="{{path('php_functions_item', {slug:function.slug})}}" class="link function-link">
+                                    <div class="function-card text-start summary-text function-summary-text m-1 fs-5">
+                                        {{ function.name }}
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </ul>
+            </div>
+            <div class="list-container-item">
+                <h2 id="date-functions" class="main-title list-title ms-5 pt-5">Les dates (date)</h2>
+                <ul class="mx-auto">
+                    <div class="row m-3">
+                        {% for function in dateFunctions %}
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <a href="{{path('php_functions_item', {slug:function.slug})}}" class="link">
+                                    <div class="function-card text-start summary-text function-summary-text m-1 fs-5">
+                                        {{ function.name }}
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </ul>
+            </div>
+            <div class="list-container-item">
+                <h2 id="math-functions" class="main-title list-title ms-5 pt-5">Les fonctions mathématiques</h2>
+                <ul class="mx-auto">
+                    <div class="row m-3">
+                        {% for function in mathsFunctions %}
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <a href="{{path('php_functions_item', {slug:function.slug})}}" class="link">
+                                    <div class="function-card text-start summary-text function-summary-text m-1 fs-5">
+                                        {{ function.name }}
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </ul>
+            </div>
+            <div class="list-container-item">
+                <h2 id="error-functions" class="main-title list-title ms-5 pt-5">La gestion des erreurs</h2>
+                <ul class="mx-auto">
+                    <div class="row m-3">
+                        {% for function in errorFunctions %}
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <a href="{{path('php_functions_item', {slug:function.slug})}}" class="link">
+                                    <div class="function-card text-start summary-text function-summary-text m-1 fs-5">
+                                        {{ function.name }}
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </ul>
+            </div>
+                    <div class="list-container-item">
+                <h2 id="json-functions" class="main-title list-title ms-5 pt-5">JSON</h2>
+                <ul class="mx-auto">
+                    <div class="row m-3">
+                        {% for function in jsonFunctions %}
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <a href="{{path('php_functions_item', {slug:function.slug})}}" class="link">
+                                    <div class="function-card text-start summary-text function-summary-text m-1 fs-5">
+                                        {{ function.name }}
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </ul>
+            </div>
+            <div class="list-container-item">
+                <h2 id="object-functions" class="main-title list-title ms-5 pt-5">Les objets (object)</h2>
+                <ul class="mx-auto">
+                    <div class="row m-3">
+                        {% for function in objectFunctions %}
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <a href="{{path('php_functions_item', {slug:function.slug})}}" class="link">
+                                    <div class="function-card text-start summary-text function-summary-text m-1 fs-5">
+                                        {{ function.name }}
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </ul>
+            </div>
+            <div class="list-container-item">
+                <h2 id="variable-functions" class="main-title list-title ms-5 pt-5">Les variables</h2>
+                <ul class="mx-auto">
+                    <div class="row m-3">
+                        {% for function in variableFunctions %}
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <a href="{{path('php_functions_item', {slug:function.slug})}}" class="link function-link">
+                                    <div class="function-card text-start summary-text function-summary-text m-1 fs-5">
+                                        {{ function.name }}
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </ul>
+            </div>
+            <div class="list-container-item">
+                <h2 id="xml-functions" class="main-title list-title ms-5 pt-5">Le XML</h2>
+                <ul class="mx-auto">
+                    <div class="row m-3">
+                        {% for function in xmlFunctions %}
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <a href="{{path('php_functions_item', {slug:function.slug})}}" class="link">
+                                    <div class="function-card text-start summary-text function-summary-text m-1 fs-5">
+                                        {{ function.name }}
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </ul>
+            </div>
+            <div class="list-container-item">
+                <h2 id="mysql-functions" class="main-title list-title ms-5 pt-5">Gestion de MySQL</h2>
+                <ul class="mx-auto">
+                    <div class="row m-3">
+                        {% for function in mysqlFunctions %}
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <a href="{{path('php_functions_item', {slug:function.slug})}}" class="link">
+                                    <div class="function-card text-start summary-text function-summary-text m-1 fs-5">
+                                        {{ function.name }}
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </ul>
+            </div>
+            <div class="list-container-item">
+                <h2 id="cryptography-functions" class="main-title list-title ms-5 pt-5">La cryptographie</h2>
+                <ul class="mx-auto">
+                    <div class="row m-3">
+                        {% for function in cryptographyFunctions %}
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <a href="{{path('php_functions_item', {slug:function.slug})}}" class="link">
+                                    <div class="function-card text-start summary-text function-summary-text m-1 fs-5">
+                                        {{ function.name }}
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </ul>
+            </div>
+                    <div class="list-container-item">
+                <h2 id="curl-functions" class="main-title list-title ms-5 pt-5">cURL</h2>
+                <ul class="mx-auto">
+                    <div class="row m-3">
+                        {% for function in curlFunctions %}
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <a href="{{path('php_functions_item', {slug:function.slug})}}" class="link function-link">
+                                    <div class="function-card text-start summary-text function-summary-text m-1 fs-5">
+                                        {{ function.name }}
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </ul>
+            </div>
+            <div class="list-container-item">
+                <h2 id="type-functions" class="main-title list-title ms-5 pt-5">La gestion des types</h2>
+                <ul class="mx-auto">
+                    <div class="row m-3">
+                        {% for function in typeFunctions %}
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <a href="{{path('php_functions_item', {slug:function.slug})}}" class="link">
+                                    <div class="function-card text-start summary-text function-summary-text m-1 fs-5">
+                                        {{ function.name }}
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </ul>
+            </div>
+            <div class="list-container-item">
+                <h2 id="headers-http-functions" class="main-title list-title ms-5 pt-5">Les en-têtes HTTP</h2>
+                <ul class="mx-auto">
+                    <div class="row m-3">
+                        {% for function in headersHttpFunctions %}
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <a href="{{path('php_functions_item', {slug:function.slug})}}" class="link">
+                                    <div class="function-card text-start summary-text function-summary-text m-1 fs-5">
+                                        {{ function.name }}
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </ul>
+            </div>
+            <div class="list-container-item">
+                <h2 id="red-functions" class="main-title list-title ms-5 pt-5">La gestion du réseau</h2>
+                <ul class="mx-auto">
+                    <div class="row m-3">
+                        {% for function in redFunctions %}
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <a href="{{path('php_functions_item', {slug:function.slug})}}" class="link">
+                                    <div class="function-card text-start summary-text function-summary-text m-1 fs-5">
+                                        {{ function.name }}
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
