@@ -55,4 +55,14 @@ class PhpFunctionController extends AbstractController
             'redFunctions' => $redFunctions,
         ]);
     }
+    
+    #[Route('/php-functions/list/{slug}', name: 'php_functions_item')]
+    public function item(string $slug, PhpFunctionRepository $phpFunctionRepository): Response
+    {
+        $function = $phpFunctionRepository->findOneBy(['slug'=> $slug]);
+
+        return $this->render('php_function/item.html.twig', [
+            'function' => $function,
+        ]);
+    }
 }
