@@ -60,9 +60,18 @@ class PhpFunctionController extends AbstractController
     public function item(string $slug, PhpFunctionRepository $phpFunctionRepository): Response
     {
         $function = $phpFunctionRepository->findOneBy(['slug'=> $slug]);
+        $example = $function->getExemple();
+
+        // Reformater l'exemple de code
+        $formattedExample = str_replace(
+            ['<?php ', '?>', ';', '//'], 
+            ["<?php\n    ", "\n?>", ";\n", "    //"], 
+            $example
+        );
 
         return $this->render('php_function/item.html.twig', [
             'function' => $function,
+            'formattedExample' => $formattedExample,
         ]);
     }
 }
