@@ -138,3 +138,21 @@ a.link:hover {
 .function-summary-text:hover {
     color:#0055ff;
 }
+
+@media only screen and (min-width : 769px) {
+    .function-example {
+        max-width: 70%;
+    } 
+}
+
+@media only screen and (min-width : 1025px) {
+    .function-example {
+        max-width: 60%;
+    } 
+}
+
+@media only screen and (min-width : 1441px) {
+    .function-example {
+        max-width: 45%;
+    } 
+}
