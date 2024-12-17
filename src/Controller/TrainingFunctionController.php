@@ -9,9 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class DashboardTrainingFunctionController extends AbstractController
+class TrainingFunctionController extends AbstractController
 {
-    #[Route('/dashboard/training/function', name: 'training_function')]
+    #[Route('/training/function', name: 'training_function')]
     public function index(CategoryRepository $categoryRepository, PhpFunctionRepository $phpFunctionRepository): Response
     {
         $category = $categoryRepository->findOneBy(['name' => 'string']);
