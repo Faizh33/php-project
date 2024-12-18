@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Training{% endblock %}
+
+{% block body %}
+    <div class="dashboard-container">
+        <div class="row training-link-container">
+            <div class="col-5 col-md-3">
+                {% for id, name in functionsName %}
+                    <div class="function-name-container text" id="function-name-{{ id }}" data-id="{{ id }}">{{ name }}</div>
+                {% endfor %}
+            </div>
+            <div class="col-1"></div>
+            <div class="col-6 col-md-8">
+                {% for id, definition in functionsDefinition %}
+                    <div class="function-definition-container text"  id="function-definition-{{ id }}" data-id="{{ id }}">{{ definition }}</div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
