@@ -18,4 +18,41 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const nameElements = document.querySelectorAll('.function-name-container');
+            const definitionElements = document.querySelectorAll('.function-definition-container');
+
+            //Selection d'un nom de fonction
+            nameElements.forEach(nameElement => {
+                nameElement.addEventListener("click", () => {
+                    // Supprime la classe "selected" de tous les autres éléments
+                    nameElements.forEach(el => el.classList.remove("selected"));
+
+                    // Ajoute ou retire la classe "selected" sur l'élément cliqué
+                    if (!nameElement.classList.contains("selected")) {
+                        nameElement.classList.add("selected");
+                    } else {
+                        nameElement.classList.remove("selected");
+                    }
+                });
+            });
+
+            //Sélection d'une définition
+            definitionElements.forEach(definitionElement => {
+                definitionElement.addEventListener("click", () => {
+                    // Supprime la classe "selected" de tous les autres éléments
+                    definitionElements.forEach(el => el.classList.remove("selected"));
+
+                    // Ajoute ou retire la classe "selected" sur l'élément cliqué
+                    if (!definitionElement.classList.contains("selected")) {
+                        definitionElement.classList.add("selected");
+                    } else {
+                        definitionElement.classList.remove("selected");
+                    }
+                });
+            });
+        });
+    </script>
 {% endblock %}
