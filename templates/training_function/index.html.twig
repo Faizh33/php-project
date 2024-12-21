@@ -1,58 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Training{% endblock %}
+{% block title %}Dashboard{% endblock %}
 
 {% block body %}
-    <div class="dashboard-container">
-        <div class="row training-link-container">
-            <div class="col-5 col-md-3">
-                {% for id, name in functionsName %}
-                    <div class="function-name-container text" id="function-name-{{ id }}" data-id="{{ id }}">{{ name }}</div>
-                {% endfor %}
-            </div>
-            <div class="col-1"></div>
-            <div class="col-6 col-md-8">
-                {% for id, definition in functionsDefinition %}
-                    <div class="function-definition-container text"  id="function-definition-{{ id }}" data-id="{{ id }}">{{ definition }}</div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const nameElements = document.querySelectorAll('.function-name-container');
-            const definitionElements = document.querySelectorAll('.function-definition-container');
-
-            //Selection d'un nom de fonction
-            nameElements.forEach(nameElement => {
-                nameElement.addEventListener("click", () => {
-                    // Supprime la classe "selected" de tous les autres éléments
-                    nameElements.forEach(el => el.classList.remove("selected"));
-
-                    // Ajoute ou retire la classe "selected" sur l'élément cliqué
-                    if (!nameElement.classList.contains("selected")) {
-                        nameElement.classList.add("selected");
-                    } else {
-                        nameElement.classList.remove("selected");
-                    }
-                });
-            });
-
-            //Sélection d'une définition
-            definitionElements.forEach(definitionElement => {
-                definitionElement.addEventListener("click", () => {
-                    // Supprime la classe "selected" de tous les autres éléments
-                    definitionElements.forEach(el => el.classList.remove("selected"));
-
-                    // Ajoute ou retire la classe "selected" sur l'élément cliqué
-                    if (!definitionElement.classList.contains("selected")) {
-                        definitionElement.classList.add("selected");
-                    } else {
-                        definitionElement.classList.remove("selected");
-                    }
-                });
-            });
-        });
-    </script>
+    {# {% include 'training_function/function_matching_game.html.twig' %} #}
+    {% include 'training_function/function_find_name_game.html.twig' %}
 {% endblock %}
