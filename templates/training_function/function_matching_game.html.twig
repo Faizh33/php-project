@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Training{% endblock %}
+
+{% block body %}
+    <div class="exercise-container">
+        <div class="row training-link-container">
+            <div class="col-5 col-md-3">
+                {% for id, name in functionsName %}
+                    <div class="function-container function-name-container text" id="function-name-{{ id }}" data-id="{{ id }}">{{ name }}</div>
+                {% endfor %}
+            </div>
+            <div class="col-1"></div>
+            <div class="col-6 col-md-8">
+                {% for id, definition in functionsDefinition %}
+                    <div class="function-container function-definition-container text"  id="function-definition-{{ id }}" data-id="{{ id }}">{{ definition }}</div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const nameElements = document.querySelectorAll('.function-name-container');
+        const definitionElements = document.querySelectorAll('.function-definition-container');
+        let selectedElements = []; // Stocker les IDs des éléments sélectionnés
+
+        // Sélection d'un nom de fonction
+        nameElements.forEach(nameElement => {
+            nameElement.addEventListener("click", () => {
+                // Supprime la classe "selected" de tous les autres éléments
+                nameElements.forEach(el => el.classList.remove("selected"));
+
+                // Ajoute ou retire la classe "selected" sur l'élément cliqué
+                if (!nameElement.classList.contains("selected") && !nameElement.classList.contains("correct")) {
+                    nameElement.classList.add("selected");
+                    selectedElements[0] = nameElement.dataset.id;
+                    if(nameElement.classList.contains("error")) {
+                        nameElement.classList.remove("error");
+                    }
+                } else {
+                    nameElement.classList.remove("selected");
+                    selectedElements.splice(0, 1);
+                }
+
+                // Vérification après chaque clic
+                checkMatch();
+            });
+        });
+
+        // Sélection d'une définition
+        definitionElements.forEach(definitionElement => {
+            definitionElement.addEventListener("click", () => {
+                // Supprime la classe "selected" de tous les autres éléments
+                definitionElements.forEach(el => el.classList.remove("selected"));
+
+                // Ajoute ou retire la classe "selected" sur l'élément cliqué
+                if (!definitionElement.classList.contains("selected") && !definitionElement.classList.contains("correct")) {
+                    definitionElement.classList.add("selected");
+                    selectedElements[1] = definitionElement.dataset.id;
+                    if(definitionElement.classList.contains("error")) {
+                        definitionElement.classList.remove("error");
+                    }
+                } else {
+                    definitionElement.classList.remove("selected");
+                    selectedElements.splice(1, 1);
+                }
+
+                // Vérification après chaque clic
+                checkMatch();
+            });
+        });
+
+        // Fonction pour vérifier si une association est correcte
+        function checkMatch() {
+            if (selectedElements[0] && selectedElements[1]) {
+                const nameElement = document.querySelector(`.function-name-container[data-id='${selectedElements[0]}']`);
+                const definitionElement = document.querySelector(`.function-definition-container[data-id='${selectedElements[1]}']`);
+
+                if (selectedElements[0] === selectedElements[1]) {
+                    nameElement.classList.remove("selected");
+                    definitionElement.classList.remove("selected");
+
+                    nameElement.classList.add("correct");
+                    definitionElement.classList.add("correct");
+                } else {
+                    nameElement.classList.remove("selected");
+                    definitionElement.classList.remove("selected");
+
+                    nameElement.classList.add("error");
+                    definitionElement.classList.add("error");
+
+                    // Supprimer la classe "error" après 3 secondes
+                    setTimeout(() => {
+                        nameElement.classList.remove("error");
+                        definitionElement.classList.remove("error");
+                    }, 1000);
+                }
+
+                // Réinitialiser les sélections après vérification
+                selectedElements = [];
+            }
+        }
+    });
+</script>
+
+{% endblock %}
