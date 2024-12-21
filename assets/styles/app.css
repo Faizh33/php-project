@@ -162,11 +162,11 @@ a.link:hover {
 }
 
 /* Exercices */
-.correct { background-color: #99ff99 !important; }
+.correct { background-color: #00a505 !important; color: white; }
 
-.error { background-color: #ff6666 !important; }
+.error { background-color: #ff0000 !important; color: white; }
 
-.selected { background-color: #ffb600 !important; border:#858587 !important; }
+.selected { background-color: #ffb600 !important; }
 
 
 .training-link-container {
@@ -175,16 +175,18 @@ a.link:hover {
     align-items: center;
 }
 
-.function-name-container, .function-definition-container {
-    cursor: pointer;
-    background-color: #333333;
-    color: white;
-    border: 4px solid rgb(0, 85, 255);
+.function-container {
+    background-color: #efefef;
+    border: 2px solid rgb(0, 85, 255);
     border-radius: 10px;
-    text-align: center;
     padding: 5px;
     margin: 20px auto;
     font-weight: bold;
     margin-left: 10px;
     margin-right: 10px;
+}
+
+.function-name-container, .function-definition-container {
+    text-align: center;
+    cursor: pointer;
 }
