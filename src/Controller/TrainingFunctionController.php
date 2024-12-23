@@ -49,9 +49,42 @@ class TrainingFunctionController extends AbstractController
         $functionsName = shuffle_assoc($functionsName);
         $functionsDefinition = shuffle_assoc($functionsDefinition);
 
+        // Récupération d'une fonction aléatoire et de ses informations
+        $uniqueFunction = $functions[0];
+        $functionExample = $uniqueFunction->getExemple();
+        $functionName = $uniqueFunction->getName();
+
+        // Retrait des parenthèses et remplacement du nom de la fonction dans l'exemple
+        $nameWithoutParenthesis = str_replace('()', '', $functionName);
+        $gameExample = str_replace($nameWithoutParenthesis, '_________', $functionExample);
+
+        // Reformater l'exemple de code
+        $formattedGameExample = str_replace(
+            ['<?php ', ' ?>', ';  ', '//'],
+            ["<?php\n    ", "\n?>", ";\n", "    //"],
+            $gameExample
+        );
+
+        // Création d'un tableau avec 4 noms de fonction, dont celle sélectionnée
+        $functionsNameChoice = [$uniqueFunction->getId() => $functionName];
+        $functionsChoice = array_slice($functions, 0, 4);
+
+        foreach ($functionsChoice as $function) {
+            $functionsNameChoice[$function->getId()] = $function->getName();
+        }
+
+        // Mélange des choix de fonctions
+        shuffle($functionsNameChoice);
+
         return $this->render('training_function/index.html.twig', [
+            'functions' => $functions,
             'functionsName' => $functionsName,
             'functionsDefinition' => $functionsDefinition,
+            'uniqueFunction' => $uniqueFunction,
+            'formattedGameExample' => $formattedGameExample,
+            'gameExample' => $gameExample,
+            'functionsNameChoice' => $functionsNameChoice,
+            'nameWithoutParenthesis' => $nameWithoutParenthesis,
         ]);
     }
 }
