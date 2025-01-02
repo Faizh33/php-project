@@ -14,4 +14,31 @@
             </div>
         {% endfor %}
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        const functions = document.querySelectorAll('.function-name-container');
+        let selectedElement = null;
+
+        functions.forEach(func => {
+            func.addEventListener('click', () => {
+                // Ignore si l'élément est déjà correct
+                if (func.classList.contains('correct')) {
+                    return;
+                }
+
+                // Retire la classe "selected" des autres éléments
+                functions.forEach(el => el.classList.remove('selected'));
+
+                // Ajoute ou retire la classe "selected" sur l'élément cliqué
+                if (!func.classList.contains('selected')) {
+                    func.classList.add('selected');
+                    selectedElement = func.dataset.id;
+                } else {
+                    func.classList.remove('selected');
+                    selectedElement = null;
+                }
+            });
+        });
+    });
+    </script>
 {% endblock %}
