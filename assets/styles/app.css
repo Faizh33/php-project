@@ -143,9 +143,13 @@ a.link:hover {
     color:#0055ff;
 }
 
+.function-example {
+    max-width: 95%;
+} 
+
 @media only screen and (min-width : 769px) {
     .function-example {
-        max-width: 70%;
+        max-width: 80%;
     } 
 }
 
@@ -167,6 +171,8 @@ a.link:hover {
 .error { background-color: #ff0000 !important; color: white; }
 
 .selected { background-color: #ffb600 !important; }
+
+.disabled { border: none !important; color: lightgray !important; }
 
 
 .training-link-container {
