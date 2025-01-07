@@ -53,6 +53,7 @@ class TrainingFunctionController extends AbstractController
         $uniqueFunction = $functions[0];
         $functionExample = $uniqueFunction->getExemple();
         $functionName = $uniqueFunction->getName();
+        $functionId = $uniqueFunction->getId();
 
         // Retrait des parenthèses et remplacement du nom de la fonction dans l'exemple
         $nameWithoutParenthesis = str_replace('()', '', $functionName);
@@ -67,20 +68,31 @@ class TrainingFunctionController extends AbstractController
 
         // Création d'un tableau avec 4 noms de fonction, dont celle sélectionnée
         $functionsNameChoice = [$uniqueFunction->getId() => $functionName];
+
         $functionsChoice = array_slice($functions, 0, 4);
 
         foreach ($functionsChoice as $function) {
             $functionsNameChoice[$function->getId()] = $function->getName();
         }
 
-        // Mélange des choix de fonctions
-        shuffle($functionsNameChoice);
+        // Mélange des éléments du tableau tout en conservant les clés
+        $keys = array_keys($functionsNameChoice);
+        shuffle($keys);
+
+        $shuffledFunctions = [];
+        foreach ($keys as $key) {
+            $shuffledFunctions[$key] = $functionsNameChoice[$key];
+        }
+
+        // Passer le tableau mélangé à Twig
+        $functionsNameChoice = $shuffledFunctions;
 
         return $this->render('training_function/index.html.twig', [
             'functions' => $functions,
             'functionsName' => $functionsName,
             'functionsDefinition' => $functionsDefinition,
             'uniqueFunction' => $uniqueFunction,
+            'functionId' => $functionId,
             'formattedGameExample' => $formattedGameExample,
             'gameExample' => $gameExample,
             'functionsNameChoice' => $functionsNameChoice,
